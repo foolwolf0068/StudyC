@@ -1,0 +1,11 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "find.h"
+int main()
+{
+    double a, b;
+    printf("Input a and b:\n");
+    scanf("%lf%lf", &a, &)
+    printf("Hello world!\n");
+    return 0;
+}

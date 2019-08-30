@@ -1,0 +1,100 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+struct person
+{
+    char name[10];
+    struct person *next;
+};
+struct person *pBegin;
+struct person *pCurrent;
+struct person *pTemp;
+int number;
+int interval;
+
+void Countx(int m);
+void Dispx();
+void Clsx();
+void SetRing(int n);
+void Find();
+void Find1();
+void Find2();
+void Initial();
+
+int main()
+{
+    printf("Hello world!\n");
+    Initial();
+    SetRing(number);
+    Find();
+    return 0;
+}
+void SetRing(int n)
+{
+    int i;
+    char s[10];
+    pBegin = (struct person *)malloc(n*sizeof(struct person));
+    pCurrent = pBegin;
+    for(i=1; i<=n; i++, pCurrent = pCurrent->next)
+    {
+        pCurrent->next = pBegin + i%n;
+        printf("输入第%d个人的名字: ", i);
+        gets(s);
+        strcpy(pCurrent->name, s);
+    }
+    pCurrent = &pBegin[n-1];
+}
+void Countx(int m)
+{
+    int i;
+    for(i=0; i<m; i++)
+    {
+        pTemp = pCurrent;
+        pCurrent = pTemp->next;
+    }
+}
+void Dispx()
+{
+    printf("%s ", pCurrent->name);
+}
+void Clsx()
+{
+    pTemp->next = pCurrent->next;
+    pCurrent = pTemp;
+}
+void Initial()
+{
+    printf("输入参加游戏的人数： ");
+    scanf("%d", &number);
+    printf("输入间隔数: ");
+    scanf("%d", &interval);
+    getchar();
+}
+void Find()
+{
+    Find1();
+    Find2();
+}
+void Find1()
+{
+    int i;
+    printf("出局名单如下：\n");
+    for(i=1; i<number/2; i++)
+    {
+        Countx(interval);
+        Dispx();
+        Clsx();
+        if(i%5==0)
+        {
+            printf("\n");
+        }
+    }
+
+}
+void Find2()
+{
+    int i, num;
+    num = number - number/2;
+    printf("生还者名单如下：\n");
+    for(i=1; i<=n)
+}

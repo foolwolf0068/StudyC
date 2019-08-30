@@ -1,0 +1,14 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int a;
+    scanf("%d",&a);
+    if((a>=0) && (a<=500))
+    {
+        if (a>60)
+    }
+    printf("Hello world!\n");
+    return 0;
+}

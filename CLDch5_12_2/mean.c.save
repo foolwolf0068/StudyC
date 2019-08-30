@@ -1,0 +1,5 @@
+#include "mean.h"
+double mean(double m1, double m2)
+{
+    return ((m1+m2)*DIV2));
+}

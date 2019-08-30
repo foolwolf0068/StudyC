@@ -1,0 +1,15 @@
+#include <stdio.h>
+#include <stdlib.h>
+void max(int , int , int);
+int main()
+{
+    printf("Hello world!\n");
+    return 0;
+}
+void max(int a, int b, int p)
+{
+    if(a<b)
+    {
+        p = b;
+    }
+}

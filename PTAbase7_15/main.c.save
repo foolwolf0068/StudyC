@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <stdlib.h>
+unsigned long fact(int n);
+unsigned long den(int n);
+long double fact2den(unsigned int n, long double a);
+int main()
+{
+    double eps,error=1,sum0;
+    int n=0;
+    scanf("%lf",&eps);
+    while (error>eps)
+    {
+        error = 1.0*fact(n)/den(n);
+        sum0 += error*2;
+        n++;
+    }
+    printf("%f\n",sum0);
+
+    return 0;
+}
+unsigned long fact(int n)
+{
+    if (n<=1)
+        return 1;
+    else
+        return n*fact(n-1);
+}
+unsigned long den(int n)
+{
+    if (n<1)
+        return 1;
+    else
+        return (2*n+1)*den(n-1);
+}
+long double fact2den(unsigned int n, long double a)
+{
+    if (n<1)
+        return a;
+    else
+        return fact2den(n-1,a*n/(2.0*n+1));
+}

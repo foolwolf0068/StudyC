@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1564925271 source:n:\study\program\programingstudy\studyc\capch8_test\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

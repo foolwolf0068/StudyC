@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1562326670 source:n:\study\program\programingstudy\studyc\hw10_1\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

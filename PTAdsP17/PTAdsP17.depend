@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1566990050 source:n:\study\program\programingstudy\studyc\ptadsp17\main.c
+	<stdio.h>
+	<stdlib.h>
+

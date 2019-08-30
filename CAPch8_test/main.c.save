@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define Maxnum 201
+int main()
+{
+    int a, b, q, r, flag = 1;
+    int arr[Maxnum] = {0};
+    scanf("%d/%d", &a, &b);
+    printf("a = %d, b = %d\n",a ,b);
+    if(a>=10 && a<b && b<100)
+    {
+        printf("0.");
+        r = a;
+        do
+        {
+            q = a*10/b;
+            printf("%d", a*10/b);
+            r = a*10 - b*q;
+            flag++;
+        }while(r!=0 && flag<=200);
+        printf("\n");
+    }
+
+    return 0;
+}

@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#define Nmax 200
+int isPrime(int n);
+int main()
+{
+    int a[Nmax];
+    int n,m,num=3;
+    a[0]=2;    
+    for(int i=1;i<Nmax;i++)
+    {
+        if (isPrime(num))
+        {
+            a[i] = num;
+        }
+        num += 2;
+    }
+    for(int i=0;i<Nmax;i++)
+    {
+        printf("%d ", a[i]);
+    }
+    int sum0=0;
+    for(int i=n-1;i<m;i++)
+    {
+        sum0 += a[i];
+    }
+    printf("%d\n",sum0);
+    return 0;
+}
+int isPrime(int num)
+{
+    for (int i=2;i<=sqrt(num);i++)
+    {
+        if(num%i==0) return 0;
+    }
+    return 1;
+}

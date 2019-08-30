@@ -1,0 +1,14 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main()
+{
+
+    char str[] = "$GPRMC,024813.640,A,3158.4608,N,11848.3737,E,10.05,324.27,150706,,,A*50";
+    int str_len;
+    str_len = strlen(str);
+    printf("%d\n", strchr(str,'$'));
+
+    return 0;
+}

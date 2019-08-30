@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+int answer(int, int);
+int main()
+{
+    printf("Hello world!\n");
+    int n = 0;
+    int num;
+    int A;
+    
+    return 0;
+}
+int answer(int num, int A)
+{
+    if(num==A)
+    {
+        printf("Very good!\n");
+        return 0;
+    }
+    else if(num < A)
+    {
+        printf("Your guess is lower! Guess again...\n");
+        return 1;
+    }
+    else
+    {
+        printf("Your guess is higher!Guess again...\n");
+        return 2;
+    }
+}

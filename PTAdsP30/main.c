@@ -1,0 +1,129 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <string.h>
+
+#define MAXS 11
+#define MAXD 5
+
+typedef struct HashEntry *List;
+struct HashEntry{
+    char PhoneNo[MAXS+1];
+    int Cnt;
+    List Next;
+};
+
+typedef struct HashTb1 *HashTable;
+struct HashTb1{
+    int Tablesize;
+    List TheLists;
+};
+
+int NextPrime(int N)
+{
+    int i;
+    if(!(N%2))
+    {
+        N++;
+    }
+    for(;;N += 2)
+    {
+        for(i=(int)sqrt(N); i>2; i--)\
+        {
+            if(!(N%i)) break;
+        }
+        if (i==2) break;
+    }
+    return N;
+}
+
+HashTable InitializeTable(int N)
+{
+    int i;
+    HashTable H = malloc(sizeof(struct HashTb1));
+    H->Tablesize = NextPrime(N);
+    H->TheLists = malloc(sizeof(struct HashEntry) * H->Tablesize);
+    for(i=0; i<H->Tablesize; i++)
+    {
+        H->TheLists[i].PhoneNo[0] = '\0';
+        H->TheLists[i].Cnt = 0;
+        H->TheLists[i].Next = NULL;
+    }
+    return H;
+}
+
+int Hash(int Key, int P)
+{
+    return Key%P;
+}
+
+void InsertAndCount(char *Key, HashTable H)
+{
+    List Ptr, NewCell, L;
+    L = &(H->TheLists[Hash(atoi(Key+6), H->Tablesize)]);
+    Ptr = L->Next;
+    while(Ptr && strcmp(Ptr->PhoneNo, Key))
+        Ptr = Ptr->Next;
+    if(Ptr)
+        Ptr->Cnt++;
+    else{
+        NewCell = malloc(sizeof(struct HashEntry));
+        strcpy(NewCell->PhoneNo, Key);
+        NewCell->Cnt = 1;
+        NewCell->Next = L->Next;
+        L->Next = NewCell;
+    }
+}
+
+void Output(HashTable H)
+{
+    int i, MaxCnt, PCnt;
+    List Ptr;
+    char MinPhone[MAXS+1];
+    MaxCnt = PCnt = 0;
+    MinPhone[0] = '\0';
+    for(i=0; i<H->Tablesize; i++)
+    {
+        Ptr = H->TheLists[i].Next;
+        while(Ptr)
+        {
+            if(Ptr->Cnt > MaxCnt)
+            {
+                MaxCnt = Ptr->Cnt;
+                strcpy(MinPhone, Ptr->PhoneNo);
+                PCnt = 1;
+            }
+            else if(Ptr->Cnt == MaxCnt)
+            {
+                PCnt++;
+                if(strcmp(MinPhone, Ptr->PhoneNo)>0)
+                {
+                    strcpy(MinPhone, Ptr->PhoneNo);
+                }
+            }
+            Ptr = Ptr->Next;
+        }
+    }
+    printf("%s %d", MinPhone, MaxCnt);
+    if(PCnt>1)
+        printf(" %d", PCnt);
+    printf("\n");
+}
+
+int main()
+{
+    int N, i;
+    char Key[MAXS+1];
+    HashTable H;
+    scanf("%d", &N);
+    H = InitializeTable(N);
+    for(i=0; i<N; i++)
+    {
+        scanf("%s", Key);
+        InsertAndCount(Key, H);
+        scanf("%s", Key);
+        InsertAndCount(Key, H);
+    }
+    Output(H);
+    return 0;
+}

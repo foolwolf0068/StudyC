@@ -1,0 +1,60 @@
+#include <stdio.h>
+#include <stdlib.h>
+enum weekday get_weekday(int, int);
+void print_today(enum weekday);
+enum weekday{monday = 1, tuesday, wednesday, thurday, friday, saturday, sunday};
+int main()
+{
+    printf("Hello world!\n");
+    int month, day;
+    enum weekday today;
+    printf("Input month and day:");
+    scanf("%d%d", &month, &day);
+    today = get_weekday(month, day);
+    print_today(today);
+    return 0;
+}
+
+enum weekday get_weekday(int month, int day)
+{
+    int m[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    int i = 0, alldays = 0, origin_day = 3;
+    for(i=1; i<month; i++)
+    {
+        alldays += m[i-1];
+    }
+    alldays += day - 1;
+    alldays = (alldays + origin_day) % 7;
+    if(alldays == 0)
+    {
+        return 7;
+    }
+    return alldays;
+}
+void print_today(enum weekday today)
+{
+    switch(today)
+    {
+    case 1:
+        printf("Today is %s \n", "Monday");
+        break;
+    case 2:
+        printf("Today is %s \n", "Tuesday");
+        break;
+    case 3:
+        printf("Today is %s \n", "Wednesday");
+        break;
+    case 4:
+        printf("Today is %s \n", "Thursday");
+        break;
+    case 5:
+        printf("Today is %s \n", "Friday");
+        break;
+    case 6:
+        printf("Today is %s \n", "Saturday");
+        break;
+    case 7:
+        printf("Today is %s \n", "Sunday");
+        break;
+    }
+}

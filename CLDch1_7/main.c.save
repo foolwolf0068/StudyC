@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <stdlib.h>
+struct st
+{
+    int a, b;
+    double f;
+}s, *ps;
+int main()
+{
+    double a = 6.8;
+    double *pd = &a;
+    float b = 6.5;
+    float *pf = &b;
+    char c = 'G';
+    char *pc = &c;
+    int *p = NULL;
+    printf("%d %d %d %d %d\n", sizeof(pd), sizeof(pf), sizeof(pc), sizeof(p), sizeof(ps));
+    int a1 = 65, *pa;
+    p = &a1;
+    printf("a = %d, a's address is , p points to the address %#p.\n", a, &a, p);
+    printf("Via the name is\n");
+    return 0;
+}

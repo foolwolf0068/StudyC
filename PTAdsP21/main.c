@@ -1,0 +1,132 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAXV 1000
+
+typedef int DisjSet[MAXV+1];
+typedef int Vertex;
+
+struct EdgeType{
+    Vertex V1, V2;
+    int W;
+};
+
+DisjSet VSet;
+struct EdgeType *Eset;
+
+void InitializeVSet(int N)
+{
+    while(N)
+        VSet[N--] = -1;
+}
+
+Vertex Find(Vertex V)
+{
+    Vertex root, trail, lead;
+    for(root=V; VSet[root]>0; root = VSet[root])
+        ;
+    for(trail=V; trail != root; trail = lead)
+    {
+        lead = VSet[trail];
+        VSet[trail] = root;
+    }
+    return root;
+}
+
+void SetUnion(Vertex Root1, Vertex Root2)
+{
+    if(VSet[Root2] <VSet[Root1])
+    {
+        VSet[Root2] += VSet[Root1];
+        VSet[Root1] = Root2;
+    }else{
+        VSet[Root1] += VSet[Root2];
+        VSet[Root2] = Root1;
+    }
+}
+
+void MinHeap(int i, int M)
+{
+    int child;
+    struct EdgeType temp;
+
+    temp = Eset[i];
+    for(; ((i<<1)+1)<M; i= child)
+    {
+        child = (i<<1) +1;
+        if(child!=M-1 && Eset[child+1].W <Eset[child].W)
+            child++;
+        if(temp.W > Eset[child].W)
+            Eset[i] = Eset[child];
+        else
+            break;
+    }
+    Eset[i] = temp;
+}
+
+void InitializeESet(int M)
+{
+    int i;
+    for(i = M/2; i>=0; i--)
+        MinHeap(i, M);
+}
+
+int GetEdge(int CurrentSize)
+{
+    struct EdgeType temp;
+    temp = Eset[0];
+    Eset[0] = Eset[CurrentSize-1];
+    Eset[CurrentSize-1] = temp;
+    MinHeap(0, CurrentSize-1);
+    return CurrentSize-1;
+}
+
+int CheckCycle(Vertex V1, Vertex V2)
+{
+    Vertex Root1 = Find(V1);
+    Vertex Root2 = Find(V2);
+    if(Root1 == Root2)
+        return 0;
+    else{
+        SetUnion(Root1, Root2);
+        return 1;
+    }
+}
+
+int Kruskal(int N, int M)
+{
+    int EdgeN = 0;
+    int Cost = 0;
+    int NextEdge = M;
+    InitializeVSet(N);
+    InitializeESet(M);
+    while(EdgeN < N-1)
+    {
+        if(NextEdge <= 0)
+            break;
+        NextEdge = GetEdge(NextEdge);
+        if(CheckCycle(Eset[NextEdge].V1, Eset[NextEdge].V2))
+        {
+            Cost += Eset[NextEdge].W;
+            EdgeN++;
+        }
+    }
+    if(EdgeN < N-1)
+        Cost = -1;
+    return Cost;
+}
+
+int main()
+{
+    int N, M, i;
+    scanf("%d %d", &N, &M);
+    if(M<N-1)
+        printf("-1\n");
+    else{
+        Eset = malloc(sizeof(struct EdgeType)*M);
+        for(i=0; i<M; i++)
+            scanf("%d %d %d", &Eset[i].V1, &Eset[i].V2, &Eset[i].W);
+        printf("%d\n", Kruskal(N, M));
+    }
+    return 0;
+}

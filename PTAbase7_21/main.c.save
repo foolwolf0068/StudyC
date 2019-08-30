@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int X,Y,N;
+    scanf("%d", &N);
+    for(X=1; X<sqrt(N); X++)
+    {
+        for (Y=X+1;Y<=sqrt(N-X*X); Y++)
+        {
+            if((X*X+Y*Y)==N)
+        }
+    }
+    printf("Hello world!\n");
+    return 0;
+}

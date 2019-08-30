@@ -1,0 +1,19 @@
+#include <stdio.h>
+#include <stdlib.h>
+/** \brief 
+ binsearch函数： 在升序排列的序列中查找x
+ */     
+int binsearch(int x, int v[], int n);
+int main()
+{
+    printf("Hello world!\n");
+    return 0;
+}
+int binsearch(int x, int v[], int n)
+{
+    int low, high, mid;
+    low = 0;
+    high = n - 1;
+    while (low <)
+    
+}

@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int i, a[5], b[6];
+    int *p;
+    for(i=0; i<5; i++)
+    {
+        scanf("%d%d", a+i, &b[i]);
+    }
+    p = a;
+    for(i=0; i<5; i++)
+    {
+        printf("%d %d %d ", *(a+i), b[i], i[b]);
+    }
+    printf("\n");
+    /** 4.9*/
+    int ar[] = {1, 3, 5, 7, 9};
+    for(i=0; i<5; i++)
+    {
+        printf("%d %d ", i[a], a[i]);
+    }
+    printf("\n");
+
+    for(i=0; i<5; i++)
+    {
+        printf("%p %p ", &i[a], &a[i]);
+    }
+    printf("\n");
+
+    return 0;
+}

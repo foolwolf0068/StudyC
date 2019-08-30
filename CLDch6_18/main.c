@@ -1,0 +1,19 @@
+#include <stdio.h>
+#include <stdlib.h>
+void swap(int *, const int);
+
+int main()
+{
+    printf("Hello world!\n");
+    int a = 23, b = 85;
+    printf("In main: a = %d, b = %d\n", a, b);
+    swap(&a, b);
+    printf("In main: a = %d, b = %d\n", a, b);
+    return 0;
+}
+
+void swap(int *a, const int b)
+{
+    *a  = *a + b;
+    printf("In swap: a = %d, b = %d\n", *a, b);
+}

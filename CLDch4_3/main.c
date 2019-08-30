@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int i = 0;
+    char a[] = "ABCD", *p = "abcd";
+    printf("%s, %s\n", a, p);
+    for(i=0; i<4; i++)
+    {
+        printf("%c ", p[i]);
+    }
+    while (*p)
+    {
+        printf("%c", *p++);
+    }
+    p -= 2;
+    printf(" %s\n", p);
+    p = a;
+    printf("%s, %s\n", a, p);
+    /** 4.4*/
+    char s[32], *t = " You are welcome!";
+    i = 0;
+    while (s[i] = *t++)
+    {
+        i++;
+    }
+    printf("%s\n", s);
+    /** 4.5*/
+    char *pStr, *sStr;
+    sStr = (char *)malloc(128);
+    scanf("%s", sStr);
+    pStr = sStr;
+    while (*pStr != '\0')
+    {
+        pStr++;
+    }
+    printf("%d\n", p-s);
+    /** 4.7*/
+    i = 0;
+    char *pstr[] = {"dog", "cat", "monkey", "computer", "mouse", "fish"};
+    for (i=0; i<6; i++)
+    {
+        printf("%s ", *(pstr+i));
+    }
+    printf("\n");
+    return 0;
+}

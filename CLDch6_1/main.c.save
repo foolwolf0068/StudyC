@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct LIST{
+    int a;
+    int b;
+    }d[3], *P;
+    // 返回结构值
+struct LIST make1(int x, int y)
+{
+    struct LIST temp;
+    temp.a = x;
+    temp.b = y;
+    return temp;
+}
+//返回结构指针
+struct LIST *make2(int x, int y)
+{
+    struct LIST *temp;
+    temp = (struct LIST *)malloc(sizeof(struct LIST));
+    temp->a = x;
+    temp->b = y;
+    return temp;
+};
+int main()
+{
+    int i;
+    d[0] = make1(25,32);
+    p = make2(85, )
+    printf("Hello world!\n");
+    return 0;
+}

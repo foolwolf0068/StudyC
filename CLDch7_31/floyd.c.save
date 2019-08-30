@@ -1,0 +1,19 @@
+void Floyd(MGraph G, int n)
+{
+    int i, j, k;
+    for(i=0; i<=n; i++)
+    {
+        for(j=1; j<=n; j++)
+        {
+            if(G.arcs[i][j] != Maxint)
+            {
+                P[i][j] = j;
+            }
+            else
+            {
+                P[i][j] = 0;
+            }
+        }
+    }
+    for(k=1; k<=nm)
+}

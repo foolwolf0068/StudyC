@@ -1,0 +1,15 @@
+#include <stdio.h>
+#include <stdlib.h>
+struct LIST{
+    int a;
+    int b;
+}d = {3 ,8};
+struct LIST *swap(struct LIST* );
+int main()
+{
+    printf("Hello world!\n");
+    printf("调用前：a = %d, b = %d\n", d.a, d.b);
+    swap(&d);
+    printf("返回后：")
+    return 0;
+}

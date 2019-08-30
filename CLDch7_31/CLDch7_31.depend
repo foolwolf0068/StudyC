@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1564567819 source:n:\study\program\programingstudy\studyc\cldch7_31\main.c
+	<stdio.h>
+	<stdlib.h>
+	"save.c"
+	"dijkstra.c"
+	"floyd.c"
+
+1564567329 n:\study\program\programingstudy\studyc\cldch7_31\save.c
+
+1564565644 n:\study\program\programingstudy\studyc\cldch7_31\dijkstra.c
+
+1564565731 n:\study\program\programingstudy\studyc\cldch7_31\floyd.c
+

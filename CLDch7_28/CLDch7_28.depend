@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1564495272 source:n:\study\program\programingstudy\studyc\cldch7_28\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+

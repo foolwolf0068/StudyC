@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <stdlib.h>
+struct LIST{
+    int a;
+    int b;
+}d[3];
+
+struct LIST make(int, int);
+void disp(struct LIST []);
+void display(struct LIST *);
+int main()
+{
+    printf("Hello world!\n");
+    return 0;
+}
+
+struct LIST make(int x, int y)
+{
+    struct LIST temp;
+    temp.a = x;
+    temp.b = y;
+    return temp;
+}
+
+void disp(struct LIST d[])
+{
+    int i;
+    for(i=0; i<3; i++)
+    {
+        printf("d[%d].a = %d, d[%d] = %d\n", i, d[i].a, i, d[i].b);
+    }
+}
+
+void display(struct LIST *p)
+{
+    int i;
+    for(i=0; i<3; i++)
+    {
+        printf("d[%d] = %d, d[%d] = %d\n", i, (p+i)->a, i, (p+i)->b)
+    }
+}

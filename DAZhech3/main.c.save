@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <stdlib.h>
+typedef int ElementType;
+typedef struct TreeNode *BinTree;
+typedef BinTree Position;
+struct TreeNode
+{
+    ElementType Data;
+    BinTree Left;
+    BinTree Right;
+};
+void PreOrderTraversal( BinTree BT);
+int main()
+{
+    printf("Hello world!\n");
+    return 0;
+}
+void PreOrderTraversal( BinTree BT)
+{
+    if(BT)
+    {
+        printf("%d", BT->Data)
+    }
+}
